@@ -27,12 +27,14 @@
 		B00000000000000000000012 /* KeyboardLayoutKeyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000017 /* KeyboardLayoutKeyResolver.swift */; };
 		B00000000000000000000013 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000023 /* PrivacyInfo.xcprivacy */; };
 		B00000000000000000000014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000024 /* Assets.xcassets */; };
+		B00000000000000000000015 /* StatusItemPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000025 /* StatusItemPresentation.swift */; };
 		D00000000000000000000001 /* ClipboardPayloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000011 /* ClipboardPayloadTests.swift */; };
 		D00000000000000000000002 /* ClipboardStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000012 /* ClipboardStoreTests.swift */; };
 		D00000000000000000000003 /* PasteboardReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000013 /* PasteboardReaderTests.swift */; };
 		D00000000000000000000004 /* KeyboardLayoutKeyResolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000018 /* KeyboardLayoutKeyResolverTests.swift */; };
 		D00000000000000000000005 /* ClipboardMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000019 /* ClipboardMonitorTests.swift */; };
 		D00000000000000000000006 /* AppPreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000022 /* AppPreferencesTests.swift */; };
+		D00000000000000000000007 /* StatusItemPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000026 /* StatusItemPresentationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		A00000000000000000000022 /* AppPreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferencesTests.swift; sourceTree = "<group>"; };
 		A00000000000000000000023 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A00000000000000000000024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A00000000000000000000025 /* StatusItemPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemPresentation.swift; sourceTree = "<group>"; };
+		A00000000000000000000026 /* StatusItemPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemPresentationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 			children = (
 				A00000000000000000000001 /* AppDelegate.swift */,
 				A00000000000000000000002 /* ClopsApp.swift */,
+				A00000000000000000000025 /* StatusItemPresentation.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				A00000000000000000000018 /* KeyboardLayoutKeyResolverTests.swift */,
 				A00000000000000000000019 /* ClipboardMonitorTests.swift */,
 				A00000000000000000000022 /* AppPreferencesTests.swift */,
+				A00000000000000000000026 /* StatusItemPresentationTests.swift */,
 			);
 			path = ClopsTests;
 			sourceTree = "<group>";
@@ -319,6 +325,7 @@
 				B00000000000000000000010 /* ToastPresenter.swift in Sources */,
 				B00000000000000000000011 /* HistoryPersistence.swift in Sources */,
 				B00000000000000000000012 /* KeyboardLayoutKeyResolver.swift in Sources */,
+				B00000000000000000000015 /* StatusItemPresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +339,7 @@
 				D00000000000000000000004 /* KeyboardLayoutKeyResolverTests.swift in Sources */,
 				D00000000000000000000005 /* ClipboardMonitorTests.swift in Sources */,
 				D00000000000000000000006 /* AppPreferencesTests.swift in Sources */,
+				D00000000000000000000007 /* StatusItemPresentationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

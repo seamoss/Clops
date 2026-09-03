@@ -171,6 +171,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         if let button = item.button {
             button.imagePosition = .imageOnly
+            button.imageScaling = .scaleProportionallyDown
             button.target = self
             button.action = #selector(statusItemClicked)
         }
@@ -272,34 +273,26 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         }
     }
 
-    private func statusImage(paused: Bool) -> NSImage? {
-        let name = if paused {
-            "pause.circle.fill"
-        } else if isShowingCopyFeedback {
-            "clipboard.fill"
-        } else {
-            "clipboard"
-        }
-        let description = paused ? "Clops, capture paused" : "Clops clipboard history"
-        let image = NSImage(systemSymbolName: name, accessibilityDescription: description)
-        image?.isTemplate = true
-        return image
-    }
-
-    private func updateStatusItemAppearance(paused: Bool, shortcutLabel: String?) {
-        guard let button = statusItem?.button else { return }
+    @discardableResult
+    private func updateStatusItemAppearance(
+        paused: Bool,
+        shortcutLabel: String?
+    ) -> StatusItemPresentation? {
+        guard let button = statusItem?.button else { return nil }
         if paused {
             resetCopyFeedback()
         }
-        button.image = statusImage(paused: paused)
-
-        if paused {
-            button.toolTip = shortcutLabel.map { "Clops — Capture Paused (\($0))" }
-                ?? "Clops — Capture Paused"
-        } else {
-            button.toolTip = shortcutLabel.map { "Clops Clipboard History (\($0))" }
-                ?? "Clops Clipboard History — Shortcut unavailable"
-        }
+        let presentation = StatusItemPresentation(
+            paused: paused,
+            copyFeedback: isShowingCopyFeedback,
+            shortcutLabel: shortcutLabel
+        )
+        button.image = presentation.image
+        button.toolTip = presentation.toolTip
+        button.setAccessibilityLabel(presentation.accessibilityLabel)
+        button.setAccessibilityHelp(presentation.accessibilityHelp)
+        button.setAccessibilityValue(presentation.accessibilityValue)
+        return presentation
     }
 
     private func showCopyFeedback(burstCount: Int) {
@@ -307,17 +300,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 
         copyFeedbackTask?.cancel()
         isShowingCopyFeedback = true
-        updateStatusItemAppearance(
+        guard let presentation = updateStatusItemAppearance(
             paused: false,
             shortcutLabel: hotKey.activeShortcutLabel
-        )
+        ), presentation.shouldPulse else { return }
 
         button.wantsLayer = true
         button.layer?.removeAnimation(forKey: Self.copyPulseAnimationKey)
         if !NSWorkspace.shared.accessibilityDisplayShouldReduceMotion {
-            let burstBoost = Double(min(max(burstCount - 1, 0), 3)) * 0.02
             let animation = CAKeyframeAnimation(keyPath: "transform.scale")
-            animation.values = [1.0, 1.14 + burstBoost, 0.98, 1.0]
+            animation.values = [
+                1.0,
+                StatusItemPresentation.copyPulsePeak(burstCount: burstCount),
+                0.98,
+                1.0,
+            ]
             animation.keyTimes = [0.0, 0.32, 0.7, 1.0]
             animation.duration = 0.34
             animation.timingFunctions = [
