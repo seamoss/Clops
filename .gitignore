@@ -1,0 +1,21 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+
+# macOS
+.DS_Store
+
+# Swift Package Manager (if tooling creates these)
+.build/
+.swiftpm/
+
+# Apple signing material
+*.cer
+*.p8
+*.p12
+*.mobileprovision
+*.provisionprofile

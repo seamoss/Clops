@@ -1,0 +1,511 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B00000000000000000000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000001 /* AppDelegate.swift */; };
+		B00000000000000000000002 /* ClopsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000002 /* ClopsApp.swift */; };
+		B00000000000000000000003 /* ClipboardPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000003 /* ClipboardPayload.swift */; };
+		B00000000000000000000004 /* ClipboardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000004 /* ClipboardEntry.swift */; };
+		B00000000000000000000005 /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000005 /* AppPreferences.swift */; };
+		B00000000000000000000006 /* ClipboardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000006 /* ClipboardStore.swift */; };
+		B00000000000000000000007 /* PasteboardReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000007 /* PasteboardReader.swift */; };
+		B00000000000000000000008 /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000008 /* ClipboardMonitor.swift */; };
+		B00000000000000000000009 /* PasteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000009 /* PasteCoordinator.swift */; };
+		B0000000000000000000000A /* GlobalHotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000000A /* GlobalHotKey.swift */; };
+		B0000000000000000000000B /* ClipboardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000000B /* ClipboardRowView.swift */; };
+		B0000000000000000000000C /* ClipboardAccessBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000000C /* ClipboardAccessBanner.swift */; };
+		B0000000000000000000000D /* EmptyHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000000D /* EmptyHistoryView.swift */; };
+		B0000000000000000000000E /* ClipboardHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000000E /* ClipboardHistoryView.swift */; };
+		B0000000000000000000000F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000000F /* SettingsView.swift */; };
+		B00000000000000000000010 /* ToastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000014 /* ToastPresenter.swift */; };
+		B00000000000000000000011 /* HistoryPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000015 /* HistoryPersistence.swift */; };
+		B00000000000000000000012 /* KeyboardLayoutKeyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000017 /* KeyboardLayoutKeyResolver.swift */; };
+		B00000000000000000000013 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000023 /* PrivacyInfo.xcprivacy */; };
+		D00000000000000000000001 /* ClipboardPayloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000011 /* ClipboardPayloadTests.swift */; };
+		D00000000000000000000002 /* ClipboardStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000012 /* ClipboardStoreTests.swift */; };
+		D00000000000000000000003 /* PasteboardReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000013 /* PasteboardReaderTests.swift */; };
+		D00000000000000000000004 /* KeyboardLayoutKeyResolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000018 /* KeyboardLayoutKeyResolverTests.swift */; };
+		D00000000000000000000005 /* ClipboardMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000019 /* ClipboardMonitorTests.swift */; };
+		D00000000000000000000006 /* AppPreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000022 /* AppPreferencesTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C40000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C00000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C10000000000000000000001;
+			remoteInfo = Clops;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A00000000000000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A00000000000000000000002 /* ClopsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClopsApp.swift; sourceTree = "<group>"; };
+		A00000000000000000000003 /* ClipboardPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPayload.swift; sourceTree = "<group>"; };
+		A00000000000000000000004 /* ClipboardEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardEntry.swift; sourceTree = "<group>"; };
+		A00000000000000000000005 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
+		A00000000000000000000006 /* ClipboardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardStore.swift; sourceTree = "<group>"; };
+		A00000000000000000000007 /* PasteboardReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardReader.swift; sourceTree = "<group>"; };
+		A00000000000000000000008 /* ClipboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitor.swift; sourceTree = "<group>"; };
+		A00000000000000000000009 /* PasteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteCoordinator.swift; sourceTree = "<group>"; };
+		A0000000000000000000000A /* GlobalHotKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalHotKey.swift; sourceTree = "<group>"; };
+		A0000000000000000000000B /* ClipboardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardRowView.swift; sourceTree = "<group>"; };
+		A0000000000000000000000C /* ClipboardAccessBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardAccessBanner.swift; sourceTree = "<group>"; };
+		A0000000000000000000000D /* EmptyHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyHistoryView.swift; sourceTree = "<group>"; };
+		A0000000000000000000000E /* ClipboardHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardHistoryView.swift; sourceTree = "<group>"; };
+		A0000000000000000000000F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A00000000000000000000010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A00000000000000000000011 /* ClipboardPayloadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPayloadTests.swift; sourceTree = "<group>"; };
+		A00000000000000000000012 /* ClipboardStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardStoreTests.swift; sourceTree = "<group>"; };
+		A00000000000000000000013 /* PasteboardReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardReaderTests.swift; sourceTree = "<group>"; };
+		A00000000000000000000014 /* ToastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresenter.swift; sourceTree = "<group>"; };
+		A00000000000000000000015 /* HistoryPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPersistence.swift; sourceTree = "<group>"; };
+		A00000000000000000000016 /* Clops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clops.entitlements; sourceTree = "<group>"; };
+		A00000000000000000000017 /* KeyboardLayoutKeyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutKeyResolver.swift; sourceTree = "<group>"; };
+		A00000000000000000000018 /* KeyboardLayoutKeyResolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutKeyResolverTests.swift; sourceTree = "<group>"; };
+		A00000000000000000000019 /* ClipboardMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitorTests.swift; sourceTree = "<group>"; };
+		A00000000000000000000020 /* Clops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clops.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00000000000000000000021 /* ClopsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClopsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00000000000000000000022 /* AppPreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferencesTests.swift; sourceTree = "<group>"; };
+		A00000000000000000000023 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F00000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F00000000000000000000005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E00000000000000000000000 = {
+			isa = PBXGroup;
+			children = (
+				E00000000000000000000001 /* Clops */,
+				E00000000000000000000007 /* ClopsTests */,
+				E00000000000000000000008 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E00000000000000000000001 /* Clops */ = {
+			isa = PBXGroup;
+			children = (
+				E00000000000000000000002 /* App */,
+				E00000000000000000000003 /* Models */,
+				E00000000000000000000004 /* Services */,
+				E00000000000000000000005 /* Views */,
+				E00000000000000000000006 /* Resources */,
+			);
+			path = Clops;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000002 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000001 /* AppDelegate.swift */,
+				A00000000000000000000002 /* ClopsApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000003 /* ClipboardPayload.swift */,
+				A00000000000000000000004 /* ClipboardEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000005 /* AppPreferences.swift */,
+				A00000000000000000000006 /* ClipboardStore.swift */,
+				A00000000000000000000015 /* HistoryPersistence.swift */,
+				A00000000000000000000007 /* PasteboardReader.swift */,
+				A00000000000000000000008 /* ClipboardMonitor.swift */,
+				A00000000000000000000009 /* PasteCoordinator.swift */,
+				A0000000000000000000000A /* GlobalHotKey.swift */,
+				A00000000000000000000017 /* KeyboardLayoutKeyResolver.swift */,
+				A00000000000000000000014 /* ToastPresenter.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000005 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A0000000000000000000000B /* ClipboardRowView.swift */,
+				A0000000000000000000000C /* ClipboardAccessBanner.swift */,
+				A0000000000000000000000D /* EmptyHistoryView.swift */,
+				A0000000000000000000000E /* ClipboardHistoryView.swift */,
+				A0000000000000000000000F /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000006 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000010 /* Info.plist */,
+				A00000000000000000000016 /* Clops.entitlements */,
+				A00000000000000000000023 /* PrivacyInfo.xcprivacy */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000007 /* ClopsTests */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000011 /* ClipboardPayloadTests.swift */,
+				A00000000000000000000012 /* ClipboardStoreTests.swift */,
+				A00000000000000000000013 /* PasteboardReaderTests.swift */,
+				A00000000000000000000018 /* KeyboardLayoutKeyResolverTests.swift */,
+				A00000000000000000000019 /* ClipboardMonitorTests.swift */,
+				A00000000000000000000022 /* AppPreferencesTests.swift */,
+			);
+			path = ClopsTests;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000008 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000020 /* Clops.app */,
+				A00000000000000000000021 /* ClopsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C10000000000000000000001 /* Clops */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C70000000000000000000002 /* Build configuration list for PBXNativeTarget "Clops" */;
+			buildPhases = (
+				F00000000000000000000001 /* Sources */,
+				F00000000000000000000002 /* Frameworks */,
+				F00000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clops;
+			productName = Clops;
+			productReference = A00000000000000000000020 /* Clops.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C10000000000000000000002 /* ClopsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C70000000000000000000003 /* Build configuration list for PBXNativeTarget "ClopsTests" */;
+			buildPhases = (
+				F00000000000000000000004 /* Sources */,
+				F00000000000000000000005 /* Frameworks */,
+				F00000000000000000000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C30000000000000000000001 /* PBXTargetDependency */,
+			);
+			name = ClopsTests;
+			productName = ClopsTests;
+			productReference = A00000000000000000000021 /* ClopsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C00000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					C10000000000000000000001 = {
+						CreatedOnToolsVersion = 26.6;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+					C10000000000000000000002 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = C10000000000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = C70000000000000000000001 /* Build configuration list for PBXProject "Clops" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E00000000000000000000000;
+			productRefGroup = E00000000000000000000008 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C10000000000000000000001 /* Clops */,
+				C10000000000000000000002 /* ClopsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F00000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B00000000000000000000013 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F00000000000000000000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F00000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B00000000000000000000001 /* AppDelegate.swift in Sources */,
+				B00000000000000000000002 /* ClopsApp.swift in Sources */,
+				B00000000000000000000003 /* ClipboardPayload.swift in Sources */,
+				B00000000000000000000004 /* ClipboardEntry.swift in Sources */,
+				B00000000000000000000005 /* AppPreferences.swift in Sources */,
+				B00000000000000000000006 /* ClipboardStore.swift in Sources */,
+				B00000000000000000000007 /* PasteboardReader.swift in Sources */,
+				B00000000000000000000008 /* ClipboardMonitor.swift in Sources */,
+				B00000000000000000000009 /* PasteCoordinator.swift in Sources */,
+				B0000000000000000000000A /* GlobalHotKey.swift in Sources */,
+				B0000000000000000000000B /* ClipboardRowView.swift in Sources */,
+				B0000000000000000000000C /* ClipboardAccessBanner.swift in Sources */,
+				B0000000000000000000000D /* EmptyHistoryView.swift in Sources */,
+				B0000000000000000000000E /* ClipboardHistoryView.swift in Sources */,
+				B0000000000000000000000F /* SettingsView.swift in Sources */,
+				B00000000000000000000010 /* ToastPresenter.swift in Sources */,
+				B00000000000000000000011 /* HistoryPersistence.swift in Sources */,
+				B00000000000000000000012 /* KeyboardLayoutKeyResolver.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F00000000000000000000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D00000000000000000000001 /* ClipboardPayloadTests.swift in Sources */,
+				D00000000000000000000002 /* ClipboardStoreTests.swift in Sources */,
+				D00000000000000000000003 /* PasteboardReaderTests.swift in Sources */,
+				D00000000000000000000004 /* KeyboardLayoutKeyResolverTests.swift in Sources */,
+				D00000000000000000000005 /* ClipboardMonitorTests.swift in Sources */,
+				D00000000000000000000006 /* AppPreferencesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C30000000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C10000000000000000000001 /* Clops */;
+			targetProxy = C40000000000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C60000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C60000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C60000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Clops/Resources/Clops.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4J2T5H73JM;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Clops/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.seamoss.Clops;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		C60000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Clops/Resources/Clops.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4J2T5H73JM;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Clops/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.seamoss.Clops;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "MAC_APP_STORE $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		C60000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.seamoss.ClopsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clops.app/Contents/MacOS/Clops";
+			};
+			name = Debug;
+		};
+		C60000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.seamoss.ClopsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clops.app/Contents/MacOS/Clops";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C70000000000000000000001 /* Build configuration list for PBXProject "Clops" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C60000000000000000000001 /* Debug */,
+				C60000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C70000000000000000000002 /* Build configuration list for PBXNativeTarget "Clops" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C60000000000000000000003 /* Debug */,
+				C60000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C70000000000000000000003 /* Build configuration list for PBXNativeTarget "ClopsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C60000000000000000000005 /* Debug */,
+				C60000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C00000000000000000000001 /* Project object */;
+}
