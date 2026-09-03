@@ -19,3 +19,7 @@ xcuserdata/
 *.p12
 *.mobileprovision
 *.provisionprofile
+
+# Local image-generation drafts
+tmp/imagegen/
+output/imagegen/

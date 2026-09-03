@@ -14,7 +14,7 @@ This checklist covers the project configuration and the manual App Store Connect
 - [x] `PrivacyInfo.xcprivacy` declares no tracking or off-device collection and documents the required-reason APIs used by the code.
 - [x] `ITSAppUsesNonExemptEncryption` is `false`; Clops uses Apple's CryptoKit implementation for local AES-GCM history encryption. Confirm the answers in App Store Connect for every release territory.
 - [x] A public privacy policy is linked from the app.
-- [ ] Add the final Clops app icon using Icon Composer or an Xcode asset catalog and select it for the app target.
+- [x] A complete 10-size macOS `AppIcon` asset catalog is selected for Debug and Release.
 
 ## App Store Connect
 
