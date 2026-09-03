@@ -57,7 +57,11 @@ The hosted test app uses temporary history, a private pasteboard, isolated defau
 
 ## Distribution
 
-See [MAC_APP_STORE.md](MAC_APP_STORE.md) for the release checklist and [PRIVACY.md](PRIVACY.md) for the public privacy policy.
+The official build is intended for distribution through the Mac App Store. The public repository contains safe, reproducible signing metadata, while certificates, private keys, provisioning profiles, and App Store credentials remain local to the release owner. See [MAC_APP_STORE.md](MAC_APP_STORE.md) for the release checklist and [PRIVACY.md](PRIVACY.md) for the public privacy policy.
+
+## License
+
+Clops is open source under the [MIT License](LICENSE).
 
 ## Privacy model
 

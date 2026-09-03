@@ -17,8 +17,19 @@ xcuserdata/
 *.cer
 *.p8
 *.p12
+*.pem
+*.key
+*.csr
 *.mobileprovision
 *.provisionprofile
+
+# Local credentials and distribution artifacts
+.env
+.env.*
+*.xcarchive
+*.xcresult
+*.pkg
+*.dmg
 
 # Local image-generation drafts
 tmp/imagegen/

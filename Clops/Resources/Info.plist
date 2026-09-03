@@ -31,7 +31,7 @@
 	<key>NSAppBundlesUsageDescription</key>
 	<string>Clops reads the selected app's identifier so it can exclude that app from clipboard history.</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2026. All rights reserved.</string>
+	<string>Copyright © 2026 HEAVYSTACK. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>
