@@ -2,9 +2,7 @@
 
 [![CI](https://github.com/seamoss/Clops/actions/workflows/ci.yml/badge.svg)](https://github.com/seamoss/Clops/actions/workflows/ci.yml)
 
-<p align="center">
-  <img src="Clops/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png" alt="Clops app icon" width="128">
-</p>
+<img src="Clops/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png" alt="Clops app icon" width="128">
 
 Clops is a native macOS menu-bar clipboard history app. It watches new copies, keeps a searchable local history, and lets you return a selected item to the app you were using.
 
