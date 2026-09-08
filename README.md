@@ -1,5 +1,7 @@
 # Clops
 
+[![CI](https://github.com/seamoss/Clops/actions/workflows/ci.yml/badge.svg)](https://github.com/seamoss/Clops/actions/workflows/ci.yml)
+
 <p align="center">
   <img src="Clops/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png" alt="Clops app icon" width="128">
 </p>
@@ -57,7 +59,7 @@ The hosted test app uses temporary history, a private pasteboard, isolated defau
 
 ## Distribution
 
-The official build is intended for distribution through the Mac App Store. The public repository contains safe, reproducible signing metadata, while certificates, private keys, provisioning profiles, and App Store credentials remain local to the release owner. See [MAC_APP_STORE.md](MAC_APP_STORE.md) for the release checklist and [PRIVACY.md](PRIVACY.md) for the public privacy policy.
+The official build is intended for distribution through the Mac App Store. The public repository contains safe, reproducible signing metadata, while certificates, private keys, provisioning profiles, and App Store credentials remain local to the release owner. See [RELEASING.md](RELEASING.md) for versioned GitHub releases, [MAC_APP_STORE.md](MAC_APP_STORE.md) for the App Store checklist, and [PRIVACY.md](PRIVACY.md) for the public privacy policy.
 
 ## License
 

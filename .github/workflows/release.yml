@@ -1,0 +1,259 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: clops-release
+  queue: max
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
+
+jobs:
+  build:
+    name: Validate tagged release
+    runs-on: macos-26
+    timeout-minutes: 30
+    outputs:
+      version: ${{ steps.release.outputs.version }}
+      build_number: ${{ steps.release.outputs.build_number }}
+
+    steps:
+      - name: Check out tagged source
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate release identity
+        id: release
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+
+          semver_pattern='^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$'
+          if [[ ! "$TAG" =~ $semver_pattern ]]; then
+            echo "Release tags must use strict stable SemVer: vMAJOR.MINOR.PATCH" >&2
+            exit 1
+          fi
+
+          version="${TAG#v}"
+
+          semver_is_greater() {
+            local lhs="${1#v}"
+            local rhs="${2#v}"
+            local lhs_major lhs_minor lhs_patch rhs_major rhs_minor rhs_patch
+            IFS=. read -r lhs_major lhs_minor lhs_patch <<< "$lhs"
+            IFS=. read -r rhs_major rhs_minor rhs_patch <<< "$rhs"
+
+            if (( lhs_major != rhs_major )); then
+              (( lhs_major > rhs_major ))
+              return
+            fi
+            if (( lhs_minor != rhs_minor )); then
+              (( lhs_minor > rhs_minor ))
+              return
+            fi
+            (( lhs_patch > rhs_patch ))
+          }
+
+          prior_release_count=0
+          previous_tag=""
+          while IFS= read -r candidate; do
+            [[ "$candidate" =~ $semver_pattern ]] || continue
+            [[ "$candidate" == "$TAG" ]] && continue
+            prior_release_count=$((prior_release_count + 1))
+            if ! semver_is_greater "$TAG" "$candidate"; then
+              echo "$TAG must be greater than existing release tag $candidate" >&2
+              exit 1
+            fi
+            if [[ -z "$previous_tag" ]] || semver_is_greater "$candidate" "$previous_tag"; then
+              previous_tag="$candidate"
+            fi
+          done < <(git tag --list 'v*')
+
+          if (( prior_release_count == 0 )) && [[ "$TAG" != "v0.1.0" ]]; then
+            echo "The first Clops release must be v0.1.0" >&2
+            exit 1
+          fi
+
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" refs/remotes/origin/main; then
+            echo "$TAG must point to a commit on main" >&2
+            exit 1
+          fi
+
+          resolved_version=""
+          resolved_build=""
+          for configuration in Debug Release; do
+            settings_file="$RUNNER_TEMP/${configuration}-build-settings.json"
+            xcodebuild \
+              -project Clops.xcodeproj \
+              -scheme Clops \
+              -configuration "$configuration" \
+              -destination 'generic/platform=macOS' \
+              -showBuildSettings \
+              -json \
+              CODE_SIGNING_ALLOWED=NO > "$settings_file"
+
+            project_version="$(jq -er '.[] | select(.target == "Clops") | .buildSettings.MARKETING_VERSION' "$settings_file")"
+            build_number="$(jq -er '.[] | select(.target == "Clops") | .buildSettings.CURRENT_PROJECT_VERSION' "$settings_file")"
+
+            if [[ "$project_version" != "$version" ]]; then
+              echo "$configuration MARKETING_VERSION is $project_version; expected $version from $TAG" >&2
+              exit 1
+            fi
+            if [[ ! "$build_number" =~ ^[1-9][0-9]*$ ]]; then
+              echo "$configuration CURRENT_PROJECT_VERSION must be a positive integer" >&2
+              exit 1
+            fi
+
+            if [[ -z "$resolved_version" ]]; then
+              resolved_version="$project_version"
+              resolved_build="$build_number"
+            elif [[ "$resolved_version" != "$project_version" || "$resolved_build" != "$build_number" ]]; then
+              echo "Debug and Release version settings must match" >&2
+              exit 1
+            fi
+          done
+
+          if [[ -n "$previous_tag" ]]; then
+            prior_builds="$(
+              git show "$previous_tag:Clops.xcodeproj/project.pbxproj" |
+                sed -nE 's/^[[:space:]]*CURRENT_PROJECT_VERSION = ([1-9][0-9]*);[[:space:]]*$/\1/p' |
+                sort -u
+            )"
+            prior_build_count="$(printf '%s\n' "$prior_builds" | sed '/^$/d' | wc -l | tr -d ' ')"
+            if [[ "$prior_build_count" != "1" ]]; then
+              echo "Could not resolve one build number from $previous_tag" >&2
+              exit 1
+            fi
+            prior_build="$(printf '%s\n' "$prior_builds" | sed '/^$/d')"
+            if (( 10#$resolved_build <= 10#$prior_build )); then
+              echo "Build $resolved_build must be greater than $previous_tag build $prior_build" >&2
+              exit 1
+            fi
+          fi
+
+          release_settings="$RUNNER_TEMP/Release-build-settings.json"
+          assert_release_setting() {
+            local key="$1"
+            local expected="$2"
+            local actual
+            actual="$(jq -er --arg key "$key" '.[] | select(.target == "Clops") | .buildSettings[$key]' "$release_settings")"
+            if [[ "$actual" != "$expected" ]]; then
+              echo "Release $key is $actual; expected $expected" >&2
+              exit 1
+            fi
+          }
+
+          assert_release_setting ENABLE_APP_SANDBOX YES
+          assert_release_setting ENABLE_HARDENED_RUNTIME YES
+          assert_release_setting CODE_SIGN_ENTITLEMENTS Clops/Resources/Clops.entitlements
+          assert_release_setting PRODUCT_BUNDLE_IDENTIFIER com.seamoss.Clops
+
+          release_conditions="$(
+            jq -er '.[] | select(.target == "Clops") | .buildSettings.SWIFT_ACTIVE_COMPILATION_CONDITIONS' \
+              "$release_settings"
+          )"
+          if [[ " $release_conditions " != *" MAC_APP_STORE "* ]]; then
+            echo "Release must compile with the MAC_APP_STORE condition" >&2
+            exit 1
+          fi
+
+          {
+            echo "version=$resolved_version"
+            echo "build_number=$resolved_build"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "Validated $TAG (build $resolved_build)"
+
+      - name: Run tests
+        run: |
+          set -euo pipefail
+          xcodebuild test \
+            -project Clops.xcodeproj \
+            -scheme Clops \
+            -configuration Debug \
+            -destination 'platform=macOS,arch=arm64' \
+            -derivedDataPath "$RUNNER_TEMP/ClopsTests" \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Analyze MAS-configured Release
+        run: |
+          set -euo pipefail
+          xcodebuild analyze \
+            -project Clops.xcodeproj \
+            -scheme Clops \
+            -configuration Release \
+            -destination 'generic/platform=macOS' \
+            -derivedDataPath "$RUNNER_TEMP/ClopsAnalyze" \
+            ARCHS='arm64 x86_64' \
+            ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Archive and verify MAS-configured universal Release
+        env:
+          VERSION: ${{ steps.release.outputs.version }}
+          BUILD_NUMBER: ${{ steps.release.outputs.build_number }}
+        run: |
+          set -euo pipefail
+
+          archive="$RUNNER_TEMP/Clops.xcarchive"
+          xcodebuild archive \
+            -project Clops.xcodeproj \
+            -scheme Clops \
+            -configuration Release \
+            -destination 'generic/platform=macOS' \
+            -derivedDataPath "$RUNNER_TEMP/ClopsArchive" \
+            -archivePath "$archive" \
+            ARCHS='arm64 x86_64' \
+            ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+          app="$archive/Products/Applications/Clops.app"
+          info_plist="$app/Contents/Info.plist"
+          binary="$app/Contents/MacOS/Clops"
+
+          [[ "$(plutil -extract CFBundleShortVersionString raw "$info_plist")" == "$VERSION" ]]
+          [[ "$(plutil -extract CFBundleVersion raw "$info_plist")" == "$BUILD_NUMBER" ]]
+
+          architectures="$(lipo -archs "$binary")"
+          architecture_count="$(wc -w <<< "$architectures" | tr -d ' ')"
+          [[ "$architecture_count" == "2" ]]
+          grep -qx 'arm64' <<< "$(tr ' ' '\n' <<< "$architectures")"
+          grep -qx 'x86_64' <<< "$(tr ' ' '\n' <<< "$architectures")"
+
+          echo "Verified unsigned MAS-configured Clops $VERSION ($BUILD_NUMBER): $architectures"
+
+  publish:
+    name: Publish GitHub Release
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ github.ref_name }}
+      VERSION: ${{ needs.build.outputs.version }}
+
+    steps:
+      - name: Create source release
+        run: |
+          set -euo pipefail
+
+          gh release create "$TAG" \
+            --verify-tag \
+            --title "Clops $VERSION" \
+            --generate-notes \
+            --fail-on-no-commits \
+            --latest
